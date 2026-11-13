@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+@layer base { html,body{margin:0;padding:0;} body{overscroll-behavior:none;} main>:first-child{margin-top:0!important;} main>:last-child{margin-bottom:0!important;} }
+::-webkit-scrollbar{display:none;}
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">
+tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c8eb","surface-container-high":"#dce9ff","error-container":"#ffdad6","surface-container-highest":"#d3e4fe","on-error":"#ffffff","inverse-on-surface":"#eaf1ff","on-tertiary-fixed-variant":"#314d3e","outline":"#74777e","primary-fixed-dim":"#b0c8eb","on-secondary-fixed-variant":"#005323","on-background":"#0b1c30","tertiary":"#001209","on-primary":"#ffffff","surface-bright":"#f8f9ff","on-primary-fixed-variant":"#314865","outline-variant":"#c4c6ce","on-surface-variant":"#43474d","on-primary-container":"#768dad","on-tertiary-container":"#749280","surface-container":"#e5eeff","secondary-fixed":"#95f8a7","surface":"#f8f9ff","on-surface":"#0b1c30","on-error-container":"#93000a","tertiary-container":"#0d291c","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#79db8d","tertiary-fixed-dim":"#afceba","primary-container":"#0a2540","on-tertiary":"#ffffff","on-secondary":"#ffffff","surface-container-low":"#eff4ff","primary-fixed":"#d2e4ff","background":"#f8f9ff","surface-dim":"#cbdbf5","secondary-container":"#92f5a4","inverse-surface":"#213145","tertiary-fixed":"#caead6","on-secondary-container":"#007233","on-primary-fixed":"#001c37","on-tertiary-fixed":"#042014","on-secondary-fixed":"#00210a","secondary":"#006d30","surface-tint":"#49607e","primary":"#000f22","surface-variant":"#d3e4fe","error":"#ba1a1a"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{"space-xl":"2.5rem",gutter:"1.5rem","margin-mobile":"1rem","gutter-lg":"2rem","space-xs":"0.25rem","space-lg":"1.5rem","space-sm":"0.5rem","space-md":"1rem","margin-tablet":"1.5rem",margin:"2rem","gutter-sm":"1rem"},fontFamily:{"headline-lg-mobile":["Plus Jakarta Sans"],"tabular-data":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"title-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"title-md":["Plus Jakarta Sans"]},fontSize:{"headline-lg-mobile":["22px",{lineHeight:"28px",fontWeight:"600"}],"tabular-data":["13px",{lineHeight:"18px",fontWeight:"500"}],"headline-xl-mobile":["28px",{lineHeight:"36px",fontWeight:"700"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"label-md":["13px",{lineHeight:"16px",fontWeight:"600"}],"headline-xl":["36px",{lineHeight:"44px",fontWeight:"700"}],"headline-md":["20px",{lineHeight:"28px",fontWeight:"600"}],"headline-lg":["28px",{lineHeight:"36px",fontWeight:"700"}],"title-lg":["18px",{lineHeight:"26px",fontWeight:"600"}],"label-sm":["11px",{lineHeight:"14px",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"18px",fontWeight:"400"}],"title-md":["16px",{lineHeight:"24px",fontWeight:"600"}]}}}}
+</script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+<aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest flex flex-col justify-between z-50 shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+<div class="flex flex-col">
+<div class="px-space-md py-space-md flex items-center gap-space-sm bg-surface-container-lowest">
+<img alt="AgroNECT Boyacá Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBthZnPo6-xk3dIyhhcwV4gVK5iR6TUst7_vetvInDrT8IQWqYkN-15Tr5BaC3SWWTPxkx3uqlHTLyAbnunr_Ga4MDbeGh5kr3zMR-3UhpPexRbKhuI9ObFE2mDf93IfMhcStiBVEc07mGDguxM5EodxmjqbtzN-A5Q4czFGExmqXM7eEKgWuQeeoJXuW53BlhFtYkJHf1FhDnBF_BVbZMIFCExi8-tVSoFqgoElqVG9wz3VarEVAv6w"/>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-primary tracking-tight font-bold leading-none">AgroNECT</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider mt-space-xs">Boyacá Conectada</span>
+</div>
+</div>
+<div class="px-space-md py-space-xs"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Módulos de Sistema</span></div>
+<nav class="flex flex-col gap-space-xs px-space-xs mt-space-xs" data-active-classes="bg-surface-container text-on-surface font-semibold border-l-4 border-secondary">
+<a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg bg-surface-container text-on-surface font-semibold border-l-4 border-secondary" href="catalogo.html">
+<span class="material-symbols-outlined text-[20px]">grid_view</span><span>Catálogo de Productos</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" href="detalle.html">
+<span class="material-symbols-outlined text-[20px]">analytics</span><span>Detalle y Precios</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" href="admin.html">
+<span class="material-symbols-outlined text-[20px]">tune</span><span>Gestión de Precios (Admin)</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" href="index.html">
+<span class="material-symbols-outlined text-[20px]">lock_open</span><span>Iniciar Sesión / Registro</span>
+</a>
+</nav>
+</div>
+<div class="p-space-md bg-surface-container-low">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary inline-block animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface font-semibold">Mercados Boyacá</span></div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-lowest px-space-xs py-[2px] rounded">v1.2</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Red Mayorista &amp; Coops: En Línea</p>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
+<div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface leading-tight">Operador Regional</span><span class="font-body-sm text-body-sm text-on-surface-variant">Boyacá Tech</span></div>
+</div>
+</div>
+</div>
+</aside>
+<div class="pl-64 flex flex-col min-h-screen">
+<header class="fixed top-0 left-64 right-0 h-16 bg-surface/90 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+<div class="h-16 w-full px-gutter flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs bg-surface-container-lowest px-space-sm py-space-xs rounded-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">search</span>
+<input class="bg-transparent border-0 outline-none text-body-sm font-body-sm text-on-surface placeholder-on-surface-variant w-64" placeholder="Buscar rubro, lote o municipio..." type="text"/>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container px-space-sm py-space-xs rounded font-semibold">Tunja - Sogamoso - Duitama</span>
+</div>
+<div class="flex items-center gap-space-md">
+<button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span></button>
+<button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">sync_alt</span><span class="font-label-sm text-label-sm font-semibold">SIPSA Actualizado</span></button>
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
+</div>
+</div>
+</header>
+<main class="w-full pt-16 px-gutter bg-surface flex-1">
+<div class="flex flex-col w-full">
+<div class="py-space-md flex flex-col gap-space-lg">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_1px_4px_rgba(10,37,64,0.04)]">
+<div class="flex flex-col max-w-2xl">
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Red Departamental de Abastecimiento</span>
+<span class="font-label-sm text-label-sm text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">SIPSA Boyacá Directo</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight font-bold">Explorar Productos Agropecuarios</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-space-xs">Encuentra productos frescos directo de los campos y productores de Boyacá.</p>
+</div>
+<div class="flex items-center gap-space-sm self-start lg:self-end">
+<div class="flex items-center gap-space-xs bg-surface-container-low px-space-md py-space-sm rounded-lg text-primary">
+<span class="material-symbols-outlined text-[20px] text-secondary">inventory_2</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Oferta Activa</span>
+<span class="font-title-md text-title-md text-primary font-bold leading-none">18 productos disponibles hoy</span>
+</div>
+</div>
+<button class="flex items-center gap-space-xs px-space-md py-space-sm bg-primary-container text-on-primary rounded-lg font-label-md text-label-md hover:bg-opacity-90 transition-all shadow-[0_1px_3px_rgba(0,15,34,0.12)]">
+<span class="material-symbols-outlined text-[18px]">download</span><span>Boletín Mayorista</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-[0_1px_4px_rgba(10,37,64,0.04)] flex flex-col gap-space-md">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-center">
+<div class="lg:col-span-8 relative">
+<div class="absolute inset-y-0 left-0 pl-space-md flex items-center pointer-events-none"><span class="material-symbols-outlined text-outline text-[20px]">search</span></div>
+<input class="w-full pl-11 pr-space-md py-2.5 bg-surface-container-low text-on-surface rounded-lg font-body-md text-body-md placeholder-outline focus:outline-none focus:bg-surface-container-lowest shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] transition-all" id="productSearchInput" placeholder="Buscar producto, productor o variedad..." type="text"/>
+</div>
+<div class="lg:col-span-4 flex items-center gap-space-sm">
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 pl-space-sm flex items-center pointer-events-none"><span class="material-symbols-outlined text-outline text-[18px]">location_on</span></div>
+<select class="w-full pl-9 pr-space-lg py-2.5 bg-surface-container-low text-on-surface font-label-md text-label-md rounded-lg appearance-none cursor-pointer focus:outline-none focus:bg-surface-container-lowest" id="municipalitySelect">
+<option value="all">Boyacá (Todos los Municipios)</option>
+<option value="Tunja">Tunja</option>
+<option value="Sogamoso">Sogamoso</option>
+<option value="Duitama">Duitama</option>
+<option value="Chiquinquirá">Chiquinquirá</option>
+<option value="Paipa">Paipa</option>
+<option value="Ventaquemada">Ventaquemada</option>
+<option value="Samacá">Samacá</option>
+<option value="Aquitania">Aquitania</option>
+<option value="Arcabuco">Arcabuco</option>
+<option value="Nuevo Colón">Nuevo Colón</option>
+<option value="Cómbita">Cómbita</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-space-sm flex items-center pointer-events-none text-outline"><span class="material-symbols-outlined text-[18px]">expand_more</span></div>
+</div>
+<button class="p-2.5 bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-lg transition-colors flex items-center justify-center" id="resetFiltersBtn" title="Restablecer filtros"><span class="material-symbols-outlined text-[20px]">filter_alt_off</span></button>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs" id="categoryChipGroup">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mr-space-xs font-semibold">Rubro:</span>
+<button class="category-chip px-space-md py-1.5 rounded-full font-label-md text-label-md transition-all bg-primary-container text-on-primary" data-category="all">Todas (18)</button>
+<button class="category-chip px-space-md py-1.5 rounded-full font-label-md text-label-md transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-category="Frutas"><span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">nutrition</span><span>Frutas</span></span></button>
+<button class="category-chip px-space-md py-1.5 rounded-full font-label-md text-label-md transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-category="Hortalizas"><span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">eco</span><span>Hortalizas</span></span></button>
+<button class="category-chip px-space-md py-1.5 rounded-full font-label-md text-label-md transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-category="Tubérculos"><span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">spa</span><span>Tubérculos</span></span></button>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm"><span>Orden:</span><span class="font-semibold text-primary">Mayor Disponibilidad</span></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg" id="productsGrid">
+<!-- Card 1: Papa Pastusa -->
+<article class="product-card group bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-[0_1px_4px_rgba(10,37,64,0.04)] hover:shadow-[0_8px_20px_rgba(10,37,64,0.08)] transition-all" data-category="Tubérculos" data-municipality="Ventaquemada" data-title="Papa Pastusa">
+<div>
+<div class="relative w-full h-44 rounded-lg bg-surface-container-low flex flex-col items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-transparent via-surface-container-high/40 to-transparent"></div>
+<div class="relative z-10 flex flex-col items-center gap-space-xs text-primary-container">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest shadow-[0_2px_8px_rgba(0,15,34,0.06)] flex items-center justify-center"><span class="material-symbols-outlined text-[34px] text-secondary">spa</span></div>
+<span class="font-label-sm text-label-sm tracking-wider uppercase font-semibold text-on-surface-variant">Lote Boyacense #AG-892</span>
+</div>
+<div class="absolute top-space-sm left-space-sm z-20 flex items-center gap-space-xs"><span class="px-space-sm py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed-variant font-semibold">Tubérculos</span></div>
+<div class="absolute top-space-sm right-space-sm z-20"><span class="px-space-sm py-0.5 rounded bg-surface-container-lowest text-primary font-tabular-data text-tabular-data font-bold shadow-sm">50 Bultos</span></div>
+</div>
+<div class="pt-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-secondary">location_on</span><span class="font-label-md text-label-md text-on-surface-variant">Ventaquemada</span></div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container px-space-xs py-0.5 rounded font-semibold">Calidad 1A</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-bold group-hover:text-secondary transition-colors">Papa Pastusa</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Tubérculo de altura selecto, textura óptima para cocción y comercialización mayorista.</p>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-on-surface-variant">Precio ref:</span>
+<div class="flex items-baseline gap-1">
+<span class="font-title-md text-title-md font-bold text-primary font-tabular-data">$78.000</span><span class="font-label-sm text-label-sm text-on-surface-variant">/ Bulto</span>
+</div>
+</div>
+<button onclick="window.location.href='detalle.html'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+<span>Ver detalle</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Card 2: Zanahoria Chantenay -->
+<article class="product-card group bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-[0_1px_4px_rgba(10,37,64,0.04)] hover:shadow-[0_8px_20px_rgba(10,37,64,0.08)] transition-all" data-category="Hortalizas" data-municipality="Tunja" data-title="Zanahoria Chantenay">
+<div>
+<div class="relative w-full h-44 rounded-lg bg-surface-container-low flex flex-col items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-transparent via-surface-container-high/40 to-transparent"></div>
+<div class="relative z-10 flex flex-col items-center gap-space-xs text-primary-container">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest shadow-[0_2px_8px_rgba(0,15,34,0.06)] flex items-center justify-center"><span class="material-symbols-outlined text-[34px] text-secondary">eco</span></div>
+<span class="font-label-sm text-label-sm tracking-wider uppercase font-semibold text-on-surface-variant">Lote Boyacense #AG-314</span>
+</div>
+<div class="absolute top-space-sm left-space-sm z-20 flex items-center gap-space-xs"><span class="px-space-sm py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed-variant font-semibold">Hortalizas</span></div>
+<div class="absolute top-space-sm right-space-sm z-20"><span class="px-space-sm py-0.5 rounded bg-surface-container-lowest text-primary font-tabular-data text-tabular-data font-bold shadow-sm">30 Canastillas</span></div>
+</div>
+<div class="pt-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-secondary">location_on</span><span class="font-label-md text-label-md text-on-surface-variant">Tunja</span></div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container px-space-xs py-0.5 rounded font-semibold">Cosecha Fresca</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-bold group-hover:text-secondary transition-colors">Zanahoria Chantenay</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Raíces uniformes lavadas con agua de páramo, listas para distribución regional.</p>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-on-surface-variant">Precio ref:</span>
+<div class="flex items-baseline gap-1">
+<span class="font-title-md text-title-md font-bold text-primary font-tabular-data">$45.000</span><span class="font-label-sm text-label-sm text-on-surface-variant">/ Canastilla</span>
+</div>
+</div>
+<button onclick="window.location.href='detalle.html'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+<span>Ver detalle</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Card 3: Cebolla Junca -->
+<article class="product-card group bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-[0_1px_4px_rgba(10,37,64,0.04)] hover:shadow-[0_8px_20px_rgba(10,37,64,0.08)] transition-all" data-category="Hortalizas" data-municipality="Aquitania" data-title="Cebolla Junca">
+<div>
+<div class="relative w-full h-44 rounded-lg bg-surface-container-low flex flex-col items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-transparent via-surface-container-high/40 to-transparent"></div>
+<div class="relative z-10 flex flex-col items-center gap-space-xs text-primary-container">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest shadow-[0_2px_8px_rgba(0,15,34,0.06)] flex items-center justify-center"><span class="material-symbols-outlined text-[34px] text-secondary">grass</span></div>
+<span class="font-label-sm text-label-sm tracking-wider uppercase font-semibold text-on-surface-variant">Cuenca Lago de Tota</span>
+</div>
+<div class="absolute top-space-sm left-space-sm z-20 flex items-center gap-space-xs"><span class="px-space-sm py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed-variant font-semibold">Hortalizas</span></div>
+<div class="absolute top-space-sm right-space-sm z-20"><span class="px-space-sm py-0.5 rounded bg-surface-container-lowest text-primary font-tabular-data text-tabular-data font-bold shadow-sm">120 Rollos</span></div>
+</div>
+<div class="pt-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-secondary">location_on</span><span class="font-label-md text-label-md text-on-surface-variant">Aquitania</span></div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container px-space-xs py-0.5 rounded font-semibold">Alto Rendimiento</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-bold group-hover:text-secondary transition-colors">Cebolla Junca</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Calibre grueso, follaje verde intenso y base blanca limpia de origen lacustre.</p>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-on-surface-variant">Precio ref:</span>
+<div class="flex items-baseline gap-1">
+<span class="font-title-md text-title-md font-bold text-primary font-tabular-data">$38.000</span><span class="font-label-sm text-label-sm text-on-surface-variant">/ Rollo</span>
+</div>
+</div>
+<button onclick="window.location.href='detalle.html'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+<span>Ver detalle</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Card 4: Uchuva de Exportación -->
+<article class="product-card group bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-[0_1px_4px_rgba(10,37,64,0.04)] hover:shadow-[0_8px_20px_rgba(10,37,64,0.08)] transition-all" data-category="Frutas" data-municipality="Arcabuco" data-title="Uchuva de Exportación">
+<div>
+<div class="relative w-full h-44 rounded-lg bg-surface-container-low flex flex-col items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-transparent via-surface-container-high/40 to-transparent"></div>
+<div class="relative z-10 flex flex-col items-center gap-space-xs text-primary-container">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest shadow-[0_2px_8px_rgba(0,15,34,0.06)] flex items-center justify-center"><span class="material-symbols-outlined text-[34px] text-secondary">nutrition</span></div>
+<span class="font-label-sm text-label-sm tracking-wider uppercase font-semibold text-on-surface-variant">Certificación GlobalGAP</span>
+</div>
+<div class="absolute top-space-sm left-space-sm z-20 flex items-center gap-space-xs"><span class="px-space-sm py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed-variant font-semibold">Frutas</span></div>
+<div class="absolute top-space-sm right-space-sm z-20"><span class="px-space-sm py-0.5 rounded bg-surface-container-lowest text-primary font-tabular-data text-tabular-data font-bold shadow-sm">40 Cajas</span></div>
+</div>
+<div class="pt-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-secondary">location_on</span><span class="font-label-md text-label-md text-on-surface-variant">Arcabuco</span></div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container px-space-xs py-0.5 rounded font-semibold">Export Grade</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-bold group-hover:text-secondary transition-colors">Uchuva de Exportación</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Cáliz seco intacto, grados Brix superiores a 14.5°, empacada con protocolo frío.</p>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-on-surface-variant">Precio ref:</span>
+<div class="flex items-baseline gap-1">
+<span class="font-title-md text-title-md font-bold text-primary font-tabular-data">$62.000</span><span class="font-label-sm text-label-sm text-on-surface-variant">/ Caja</span>
+</div>
+</div>
+<button onclick="window.location.href='detalle.html'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+<span>Ver detalle</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Card 5: Curuba Silvestre -->
+<article class="product-card group bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-[0_1px_4px_rgba(10,37,64,0.04)] hover:shadow-[0_8px_20px_rgba(10,37,64,0.08)] transition-all" data-category="Frutas" data-municipality="Nuevo Colón" data-title="Curuba Silvestre">
+<div>
+<div class="relative w-full h-44 rounded-lg bg-surface-container-low flex flex-col items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-transparent via-surface-container-high/40 to-transparent"></div>
+<div class="relative z-10 flex flex-col items-center gap-space-xs text-primary-container">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest shadow-[0_2px_8px_rgba(0,15,34,0.06)] flex items-center justify-center"><span class="material-symbols-outlined text-[34px] text-secondary">nest_eco_leaf</span></div>
+<span class="font-label-sm text-label-sm tracking-wider uppercase font-semibold text-on-surface-variant">Valle de Márquez</span>
+</div>
+<div class="absolute top-space-sm left-space-sm z-20 flex items-center gap-space-xs"><span class="px-space-sm py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed-variant font-semibold">Frutas</span></div>
+<div class="absolute top-space-sm right-space-sm z-20"><span class="px-space-sm py-0.5 rounded bg-surface-container-lowest text-primary font-tabular-data text-tabular-data font-bold shadow-sm">25 Canastillas</span></div>
+</div>
+<div class="pt-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-secondary">location_on</span><span class="font-label-md text-label-md text-on-surface-variant">Nuevo Colón</span></div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container px-space-xs py-0.5 rounded font-semibold">Agroecológico</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-bold group-hover:text-secondary transition-colors">Curuba Silvestre</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Pulpa aromática de clima frío, libre de agroquímicos sintéticos pesados.</p>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-on-surface-variant">Precio ref:</span>
+<div class="flex items-baseline gap-1">
+<span class="font-title-md text-title-md font-bold text-primary font-tabular-data">$55.000</span><span class="font-label-sm text-label-sm text-on-surface-variant">/ Canastilla</span>
+</div>
+</div>
+<button onclick="window.location.href='detalle.html'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+<span>Ver detalle</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Card 6: Papa Criolla Dorada -->
+<article class="product-card group bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-[0_1px_4px_rgba(10,37,64,0.04)] hover:shadow-[0_8px_20px_rgba(10,37,64,0.08)] transition-all" data-category="Tubérculos" data-municipality="Cómbita" data-title="Papa Criolla Dorada">
+<div>
+<div class="relative w-full h-44 rounded-lg bg-surface-container-low flex flex-col items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-transparent via-surface-container-high/40 to-transparent"></div>
+<div class="relative z-10 flex flex-col items-center gap-space-xs text-primary-container">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest shadow-[0_2px_8px_rgba(0,15,34,0.06)] flex items-center justify-center"><span class="material-symbols-outlined text-[34px] text-secondary">grain</span></div>
+<span class="font-label-sm text-label-sm tracking-wider uppercase font-semibold text-on-surface-variant">Selección Gourmet</span>
+</div>
+<div class="absolute top-space-sm left-space-sm z-20 flex items-center gap-space-xs"><span class="px-space-sm py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed-variant font-semibold">Tubérculos</span></div>
+<div class="absolute top-space-sm right-space-sm z-20"><span class="px-space-sm py-0.5 rounded bg-surface-container-lowest text-primary font-tabular-data text-tabular-data font-bold shadow-sm">80 Bultos</span></div>
+</div>
+<div class="pt-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-secondary">location_on</span><span class="font-label-md text-label-md text-on-surface-variant">Cómbita</span></div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container px-space-xs py-0.5 rounded font-semibold">Alta Demanda</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-bold group-hover:text-secondary transition-colors">Papa Criolla Dorada</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Calibre parejo especial para asadero y canal Horeca, pulpa compacta y firme.</p>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-on-surface-variant">Precio ref:</span>
+<div class="flex items-baseline gap-1">
+<span class="font-title-md text-title-md font-bold text-primary font-tabular-data">$85.000</span><span class="font-label-sm text-label-sm text-on-surface-variant">/ Bulto</span>
+</div>
+</div>
+<button onclick="window.location.href='detalle.html'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+<span>Ver detalle</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+</div>
+<div class="hidden flex-col items-center justify-center py-space-xl bg-surface-container-lowest rounded-xl shadow-[0_1px_4px_rgba(10,37,64,0.04)] text-center p-space-lg" id="noResultsState">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-space-sm text-outline"><span class="material-symbols-outlined text-[32px]">inventory</span></div>
+<h4 class="font-title-md text-title-md font-bold text-primary">No se encontraron productos coincidentes</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md mt-space-xs">Ajusta los términos de búsqueda o cambia el municipio de origen seleccionado para explorar otros lotes disponibles.</p>
+<button class="mt-space-md px-space-md py-space-xs bg-surface-container-low hover:bg-surface-container text-primary font-label-md text-label-md rounded-lg transition-colors" id="clearFiltersAction">Reestablecer búsqueda</button>
+</div>
+<div class="mt-space-sm bg-surface-container-lowest p-space-md rounded-xl shadow-[0_1px_4px_rgba(10,37,64,0.04)] flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span>Mostrando</span><span class="font-bold text-primary">1 - 6</span><span>de</span><span class="font-bold text-primary">18</span><span>lotes registrados en la red</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-low text-outline hover:text-on-surface hover:bg-surface-container transition-colors disabled:opacity-40" disabled=""><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-bold flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md font-medium flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md font-medium flex items-center justify-center transition-colors">3</button>
+<button class="flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Lotes por página:</span>
+<select class="bg-surface-container-low text-primary font-label-sm text-label-sm px-space-xs py-1 rounded border-0 outline-none cursor-pointer"><option>6</option><option>12</option><option>24</option></select>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function initProductFilters() {
+    const searchInput = document.getElementById('productSearchInput');
+    const municipalitySelect = document.getElementById('municipalitySelect');
+    const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+    const clearFiltersAction = document.getElementById('clearFiltersAction');
+    const categoryChips = document.querySelectorAll('.category-chip');
+    const productCards = document.querySelectorAll('.product-card');
+    const noResultsState = document.getElementById('noResultsState');
+    const grid = document.getElementById('productsGrid');
+    let currentCategory = 'all';
+    let currentMunicipality = 'all';
+    let currentSearchTerm = '';
+    function filterProducts() {
+      let visibleCount = 0;
+      productCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const muni = card.getAttribute('data-municipality');
+        const title = card.getAttribute('data-title').toLowerCase();
+        const matchCat = (currentCategory === 'all' || cat === currentCategory);
+        const matchMuni = (currentMunicipality === 'all' || muni.toLowerCase() === currentMunicipality.toLowerCase());
+        const matchSearch = (!currentSearchTerm || title.includes(currentSearchTerm) || muni.toLowerCase().includes(currentSearchTerm));
+        if (matchCat && matchMuni && matchSearch) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+      if (visibleCount === 0) {
+        grid.classList.add('hidden');
+        noResultsState.classList.remove('hidden');
+        noResultsState.classList.add('flex');
+      } else {
+        grid.classList.remove('hidden');
+        noResultsState.classList.add('hidden');
+        noResultsState.classList.remove('flex');
+      }
+    }
+    categoryChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        categoryChips.forEach(c => {
+          c.classList.remove('bg-primary-container', 'text-on-primary');
+          c.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+        });
+        chip.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+        chip.classList.add('bg-primary-container', 'text-on-primary');
+        currentCategory = chip.getAttribute('data-category');
+        filterProducts();
+      });
+    });
+    searchInput.addEventListener('input', (e) => {
+      currentSearchTerm = e.target.value.toLowerCase().trim();
+      filterProducts();
+    });
+    municipalitySelect.addEventListener('change', (e) => {
+      currentMunicipality = e.target.value;
+      filterProducts();
+    });
+    function resetAll() {
+      searchInput.value = '';
+      currentSearchTerm = '';
+      municipalitySelect.value = 'all';
+      currentMunicipality = 'all';
+      categoryChips.forEach(c => {
+        if (c.getAttribute('data-category') === 'all') {
+          c.classList.add('bg-primary-container', 'text-on-primary');
+          c.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+        } else {
+          c.classList.remove('bg-primary-container', 'text-on-primary');
+          c.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+        }
+      });
+      currentCategory = 'all';
+      filterProducts();
+    }
+    if (resetFiltersBtn) resetFiltersBtn.addEventListener('click', resetAll);
+    if (clearFiltersAction) clearFiltersAction.addEventListener('click', resetAll);
+  })();
+</script>
+</main>
+</div>
+</body>
+</html>
