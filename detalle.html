@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}
+::-webkit-scrollbar{display:none;}
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">
+tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c8eb","surface-container-high":"#dce9ff","error-container":"#ffdad6","surface-container-highest":"#d3e4fe","on-error":"#ffffff","inverse-on-surface":"#eaf1ff","on-tertiary-fixed-variant":"#314d3e","outline":"#74777e","primary-fixed-dim":"#b0c8eb","on-secondary-fixed-variant":"#005323","on-background":"#0b1c30","tertiary":"#001209","on-primary":"#ffffff","surface-bright":"#f8f9ff","on-primary-fixed-variant":"#314865","outline-variant":"#c4c6ce","on-surface-variant":"#43474d","on-primary-container":"#768dad","on-tertiary-container":"#749280","surface-container":"#e5eeff","secondary-fixed":"#95f8a7","surface":"#f8f9ff","on-surface":"#0b1c30","on-error-container":"#93000a","tertiary-container":"#0d291c","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#79db8d","tertiary-fixed-dim":"#afceba","primary-container":"#0a2540","on-tertiary":"#ffffff","on-secondary":"#ffffff","surface-container-low":"#eff4ff","primary-fixed":"#d2e4ff","background":"#f8f9ff","surface-dim":"#cbdbf5","secondary-container":"#92f5a4","inverse-surface":"#213145","tertiary-fixed":"#caead6","on-secondary-container":"#007233","on-primary-fixed":"#001c37","on-tertiary-fixed":"#042014","on-secondary-fixed":"#00210a","secondary":"#006d30","surface-tint":"#49607e","primary":"#000f22","surface-variant":"#d3e4fe","error":"#ba1a1a"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{"space-xl":"2.5rem",gutter:"1.5rem","margin-mobile":"1rem","gutter-lg":"2rem","space-xs":"0.25rem","space-lg":"1.5rem","space-sm":"0.5rem","space-md":"1rem","margin-tablet":"1.5rem",margin:"2rem","gutter-sm":"1rem"},fontFamily:{"headline-lg-mobile":["Plus Jakarta Sans"],"tabular-data":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"title-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"title-md":["Plus Jakarta Sans"]},fontSize:{"headline-lg-mobile":["22px",{lineHeight:"28px",fontWeight:"600"}],"tabular-data":["13px",{lineHeight:"18px",fontWeight:"500"}],"headline-xl-mobile":["28px",{lineHeight:"36px",fontWeight:"700"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"label-md":["13px",{lineHeight:"16px",fontWeight:"600"}],"headline-xl":["36px",{lineHeight:"44px",fontWeight:"700"}],"headline-md":["20px",{lineHeight:"28px",fontWeight:"600"}],"headline-lg":["28px",{lineHeight:"36px",fontWeight:"700"}],"title-lg":["18px",{lineHeight:"26px",fontWeight:"600"}],"label-sm":["11px",{lineHeight:"14px",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"18px",fontWeight:"400"}],"title-md":["16px",{lineHeight:"24px",fontWeight:"600"}]}}}}
+</script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+<aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest flex flex-col justify-between z-50 shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+<div class="flex flex-col">
+<div class="px-space-md py-space-md flex items-center gap-space-sm bg-surface-container-lowest">
+<img alt="AgroNECT Boyacá Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBthZnPo6-xk3dIyhhcwV4gVK5iR6TUst7_vetvInDrT8IQWqYkN-15Tr5BaC3SWWTPxkx3uqlHTLyAbnunr_Ga4MDbeGh5kr3zMR-3UhpPexRbKhuI9ObFE2mDf93IfMhcStiBVEc07mGDguxM5EodxmjqbtzN-A5Q4czFGExmqXM7eEKgWuQeeoJXuW53BlhFtYkJHf1FhDnBF_BVbZMIFCExi8-tVSoFqgoElqVG9wz3VarEVAv6w"/>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-primary tracking-tight font-bold leading-none">AgroNECT</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider mt-space-xs">Boyacá Conectada</span>
+</div>
+</div>
+<div class="px-space-md py-space-xs"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Módulos de Sistema</span></div>
+<nav class="flex flex-col gap-space-xs px-space-xs mt-space-xs" data-active-classes="bg-surface-container text-on-surface font-semibold border-l-4 border-secondary">
+<a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" href="catalogo.html">
+<span class="material-symbols-outlined text-[20px]">grid_view</span><span>Catálogo de Productos</span>
+</a>
+<a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors bg-surface-container text-on-surface font-semibold border-l-4 border-secondary" href="detalle.html">
+<span class="material-symbols-outlined text-[20px]">analytics</span><span>Detalle y Precios</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" href="admin.html">
+<span class="material-symbols-outlined text-[20px]">tune</span><span>Gestión de Precios (Admin)</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" href="index.html">
+<span class="material-symbols-outlined text-[20px]">lock_open</span><span>Iniciar Sesión / Registro</span>
+</a>
+</nav>
+</div>
+<div class="p-space-md bg-surface-container-low">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary inline-block animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface font-semibold">Mercados Boyacá</span></div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-lowest px-space-xs py-[2px] rounded">v1.2</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Red Mayorista &amp; Coops: En Línea</p>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
+<div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface leading-tight">Operador Regional</span><span class="font-body-sm text-body-sm text-on-surface-variant">Boyacá Tech</span></div>
+</div>
+</div>
+</div>
+</aside>
+<div class="pl-64 flex flex-col min-h-screen">
+<header class="fixed top-0 left-64 right-0 h-16 bg-surface/90 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+<div class="h-16 w-full px-gutter flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs bg-surface-container-lowest px-space-sm py-space-xs rounded-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">search</span>
+<input class="bg-transparent border-0 outline-none text-body-sm font-body-sm text-on-surface placeholder-on-surface-variant w-64" placeholder="Buscar rubro, lote o municipio..." type="text"/>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container px-space-sm py-space-xs rounded font-semibold">Tunja - Sogamoso - Duitama</span>
+</div>
+<div class="flex items-center gap-space-md">
+<button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span></button>
+<button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">sync_alt</span><span class="font-label-sm text-label-sm font-semibold">SIPSA Actualizado</span></button>
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
+</div>
+</div>
+</header>
+<main class="w-full pt-16 px-gutter bg-surface flex-1">
+<div class="flex flex-col w-full pb-space-xl">
+<!-- Navegación y Encabezado Contextual -->
+<div class="flex flex-col gap-space-xs py-space-md">
+<nav aria-label="Migas de pan" class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="catalogo.html">
+<span class="material-symbols-outlined text-[16px]">home</span>
+<span>Inicio</span>
+</a>
+<span class="text-outline-variant font-semibold">/</span>
+<a class="hover:text-primary transition-colors" href="catalogo.html">Catálogo</a>
+<span class="text-outline-variant font-semibold">/</span>
+<a class="hover:text-primary transition-colors" href="catalogo.html">Tubérculos</a>
+<span class="text-outline-variant font-semibold">/</span>
+<span class="text-primary font-semibold">Papa Pastusa de Boyacá</span>
+</nav>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm pt-space-xs">
+<div>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold">Módulo de Transparencia de Mercados</p>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight font-bold">Detalle del Producto y Precios de Referencia</h1>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-space-xs rounded-xl shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary inline-block animate-pulse"></span>
+<span class="font-tabular-data text-tabular-data text-on-surface-variant">Lote verificado: <span class="font-bold text-on-surface">#BY-VNT-8942</span></span>
+</div>
+</div>
+</div>
+<!-- Layout Principal Dividido en 2 Columnas -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mt-space-sm items-start">
+<!-- COLUMNA IZQUIERDA: Información del Producto (7 Columnas en Desktop) -->
+<section class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- Contenedor Visual de Producto y Sellos Regionales -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<!-- Placeholder Vectorial Estilizado (Sin fotografía raster) -->
+<div class="w-full h-72 rounded-xl bg-surface-container-low flex flex-col justify-between p-space-md relative overflow-hidden group">
+<!-- Textura Geométrica y Fondo SVG Sutil -->
+<svg class="absolute inset-0 w-full h-full text-surface-container-high opacity-35 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="28" id="agroGrid" patternunits="userSpaceOnUse" width="28">
+<circle cx="2" cy="2" fill="currentColor" r="1.5"></circle>
+<path d="M 28 0 L 0 0 0 28" fill="none" stroke="currentColor" stroke-dasharray="2 2" stroke-width="0.5"></path>
+</pattern>
+</defs>
+<rect fill="url(#agroGrid)" height="100%" width="100%"></rect>
+</svg>
+<!-- Top Bar Visual: Badges de Estado -->
+<div class="flex items-center justify-between w-full relative z-10">
+<div class="flex items-center gap-space-xs">
+<span class="bg-surface-container-lowest/90 backdrop-blur-md px-space-sm py-[3px] rounded font-label-sm text-label-sm font-bold text-primary shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">verified</span>
+                Variedad R12 / Pastusa
+              </span>
+<span class="bg-surface-container-lowest/90 backdrop-blur-md px-space-sm py-[3px] rounded font-label-sm text-label-sm font-semibold text-on-surface-variant shadow-sm">
+                Clasificación Cero (00)
+              </span>
+</div>
+<!-- Sello Oficial "Boyacá Calidad Garantizada" -->
+<div class="flex items-center gap-space-xs bg-primary text-on-primary px-space-sm py-1 rounded-full shadow-md">
+<span class="material-symbols-outlined text-[16px] text-secondary-container">workspace_premium</span>
+<span class="font-label-sm text-label-sm font-bold tracking-tight">Boyacá Calidad Garantizada</span>
+</div>
+</div>
+<!-- Arte Vectorial Principal: Tubérculo / Agroarquitectura -->
+<div class="flex items-center justify-center py- space-sm relative z-10">
+<div class="relative w-44 h-44 flex items-center justify-center">
+<!-- Círculos de Respaldo Gradiente -->
+<div class="absolute inset-0 rounded-full bg-surface-container-highest/60 scale-110 blur-xl"></div>
+<div class="relative w-36 h-36 rounded-full bg-surface-container flex items-center justify-center shadow-inner">
+<!-- Tubérculo y follaje técnico de alta precisión -->
+<svg class="w-24 h-24 text-secondary drop-shadow-sm" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 100 100">
+<!-- Hojas superiores estilizadas -->
+<path d="M50 26 C47 18 36 15 34 22 C32 29 46 32 50 36" fill="currentColor" fill-opacity="0.12"></path>
+<path d="M50 26 C53 18 64 15 66 22 C68 29 54 32 50 36" fill="currentColor" fill-opacity="0.18"></path>
+<path d="M50 36 L50 24" stroke-width="2"></path>
+<!-- Cuerpo principal tubérculo paramuno -->
+<path d="M30 46 C24 55 27 74 38 84 C48 93 64 89 71 80 C78 70 76 53 68 45 C59 36 38 36 30 46 Z" fill="currentColor" fill-opacity="0.08" stroke-width="2.8"></path>
+<!-- Ojos y texturas geológicas de la papa -->
+<path d="M38 54 Q42 53 45 56" stroke-linecap="round" stroke-width="2"></path>
+<path d="M56 50 Q60 52 62 49" stroke-linecap="round" stroke-width="2"></path>
+<path d="M44 68 Q49 71 52 67" stroke-linecap="round" stroke-width="2"></path>
+<path d="M58 75 Q63 74 65 77" stroke-linecap="round" stroke-width="1.8"></path>
+<circle cx="37" cy="74" fill="currentColor" r="1.5"></circle>
+<circle cx="68" cy="62" fill="currentColor" r="1.5"></circle>
+</svg>
+</div>
+</div>
+</div>
+<!-- Indicador Geográfico Inferior -->
+<div class="flex items-center justify-between w-full relative z-10 text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-[16px] text-secondary">explore</span>
+              Vereda Montoya · Suelo Volcánico
+            </span>
+<span class="font-tabular-data text-tabular-data bg-surface-container-lowest/80 px-2 py-0.5 rounded">
+              Lote #89 - Dic 2024
+            </span>
+</div>
+</div>
+<!-- Ficha de Identidad y Productor -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-start justify-between gap-space-sm flex-wrap">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary font-bold tracking-tight">
+                Papa Pastusa (Variedad Superior)
+              </h2>
+<div class="flex items-center gap-space-xs mt-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary">groups</span>
+<span class="font-semibold text-on-surface">Asociación Agropecuaria Los Robles</span>
+<span>— Ventaquemada, Boyacá</span>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-surface-container px-space-sm py-1 rounded">
+<span class="material-symbols-outlined text-[16px] text-secondary">eco</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Altiplano Cundiboyacense</span>
+</div>
+</div>
+<!-- Badges de Certificación y Métodos -->
+<div class="flex flex-wrap gap-space-xs mt-space-xs">
+<span class="inline-flex items-center gap-1 bg-secondary-fixed/50 text-on-secondary-fixed-variant px-space-sm py-0.5 rounded-full font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">local_florist</span>
+              Cosecha Fresca
+            </span>
+<span class="inline-flex items-center gap-1 bg-surface-container text-primary font-semibold px-space-sm py-0.5 rounded-full font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary">check_circle</span>
+              Cultivo Limpio (BPA)
+            </span>
+<span class="inline-flex items-center gap-1 bg-surface-container-high text-on-surface-variant px-space-sm py-0.5 rounded-full font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span>
+              Disponible para entrega inmediata
+            </span>
+</div>
+<!-- Párrafo Descriptivo -->
+<div class="mt-space-xs pt-space-xs">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Papa seleccionada de primera calidad, empacada en bultos de 50 kg, cultivada a 2.650 msnm en tierras de páramo boyacense con prácticas sostenibles. Piel limpia, sin daño mecánico ni plagas, con alta consistencia de almidón recomendada para consumo fresco y fritura industrial.
+            </p>
+</div>
+</div>
+<!-- Ficha Técnica Rápida -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm p-space-sm bg-surface-container-low rounded-xl">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase">Variedad</span>
+<span class="font-title-md text-title-md text-primary font-bold mt-0.5">Solanum tub.</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Pastusa Parda</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase">Compra Mínima</span>
+<span class="font-title-md text-title-md text-primary font-bold mt-0.5">20 Bultos</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">1.000 kg aprox.</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase">Presentación</span>
+<span class="font-title-md text-title-md text-primary font-bold mt-0.5">Bulto 50 kg</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Costal hilado blanco</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase">Recolección</span>
+<span class="font-title-md text-title-md text-primary font-bold mt-0.5">22 Oct 2024</span>
+<span class="font-body-sm text-body-sm text-secondary font-semibold">Frescura: 48 hrs</span>
+</div>
+</div>
+<!-- Tarjeta de Precio Ofertado por Agricultor (Verde Sutil #DCFCE7 / secondary-fixed) -->
+<div class="bg-secondary-fixed/40 p-space-md rounded-xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-space-sm relative overflow-hidden">
+<div class="flex flex-col z-10">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase font-bold tracking-wider text-on-secondary-fixed-variant">
+                Precio Directo de Asociación
+              </span>
+<span class="bg-surface-container-lowest text-secondary px-2 py-0.5 rounded font-label-sm text-label-sm font-bold shadow-sm">
+                Venta en Finca / Acopio
+              </span>
+</div>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-xl text-headline-xl text-primary font-extrabold tracking-tight">$75.000</span>
+<span class="font-title-md text-title-md text-on-surface-variant font-semibold">COP / Bulto</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-secondary-fixed-variant font-medium mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary font-bold">savings</span>
+              Ahorro estimado del <span class="font-bold underline decoration-secondary">12%</span> frente a intermediarios tradicionales de plaza.
+            </p>
+</div>
+<!-- Micro Badge de Garantía de Trato Justo -->
+<div class="flex items-center gap-space-xs bg-surface-container-lowest/80 backdrop-blur-sm p-space-sm rounded-lg shadow-sm z-10">
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary font-bold leading-tight">Comercio Justo</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">100% al productor</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Respaldo de Trazabilidad y Ubicación Municipal -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">pin_drop</span>
+<span class="font-title-md text-title-md text-primary font-bold">Ubicación y Centro de Acopio</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Coordenadas: 5.3703° N, 73.5015° W</span>
+</div>
+<!-- Falsa tarjeta de mapa sintético con data-location -->
+<div class="w-full h-32 rounded-lg bg-surface-container-low flex flex-col justify-end p-space-sm relative overflow-hidden shadow-inner" data-location="Ventaquemada, Boyacá, Colombia" style="">
+<div class="relative z-10 bg-surface-container-lowest/90 backdrop-blur-sm p-space-xs rounded flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-body-sm text-body-sm font-semibold text-primary">Km 28 Vía Tunja - Bogotá, Vereda Montoya</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Despachos 06:00 - 18:00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- COLUMNA DERECHA: Panel de Precios de Referencia de Mercado (5 Columnas en Desktop) -->
+<section class="lg:col-span-5 flex flex-col gap-space-md">
+<!-- Panel de Inteligencia SIPSA / DANE -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<!-- Cabecera del Panel -->
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[22px] text-secondary">monitoring</span>
+<h3 class="font-title-lg text-title-lg text-primary font-bold">Precios de Referencia de Mercado</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Comparativa regional en tiempo real según sistemas oficiales.
+            </p>
+</div>
+<span class="bg-surface-container px-space-xs py-0.5 rounded font-label-sm text-label-sm text-primary font-bold">
+            SIPSA-DANE
+          </span>
+</div>
+<!-- Resumen Estadístico Semanal (3 Cards) -->
+<div class="grid grid-cols-3 gap-space-xs">
+<div class="bg-surface-container-low p-space-xs rounded-lg flex flex-col items-center text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Promedio</span>
+<span class="font-title-md text-title-md text-primary font-bold mt-1 font-tabular-data">$76.800</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold mt-0.5">COP / Bulto</span>
+</div>
+<div class="bg-surface-container-low p-space-xs rounded-lg flex flex-col items-center text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Mínimo</span>
+<span class="font-title-md text-title-md text-on-surface font-bold mt-1 font-tabular-data">$72.000</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium mt-0.5">En Sogamoso</span>
+</div>
+<div class="bg-surface-container-low p-space-xs rounded-lg flex flex-col items-center text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Máximo</span>
+<span class="font-title-md text-title-md text-primary font-bold mt-1 font-tabular-data">$81.500</span>
+<span class="font-label-sm text-label-sm text-error font-medium mt-0.5">En Corabastos</span>
+</div>
+</div>
+<!-- Gráfico de Líneas Vectorial SVG: Tendencia Últimos 7 Días -->
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-inner flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-on-surface">
+              Comportamiento 7 Días (COP / Bulto)
+            </span>
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-secondary font-bold">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> +2.4% sem.
+            </span>
+</div>
+<!-- SVG Visualización Vectorial Nítida -->
+<div class="w-full h-44 relative mt-space-xs">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 380 140">
+<!-- Rejillas Horizontales de Referencia -->
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="3 3" stroke-width="1" x1="25" x2="375" y1="20" y2="20"></line>
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="3 3" stroke-width="1" x1="25" x2="375" y1="60" y2="60"></line>
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="3 3" stroke-width="1" x1="25" x2="375" y1="100" y2="100"></line>
+<!-- Etiquetas Y -->
+<text class="text-[9px] fill-on-surface-variant font-medium" x="2" y="24">82k</text>
+<text class="text-[9px] fill-on-surface-variant font-medium" x="2" y="64">77k</text>
+<text class="text-[9px] fill-on-surface-variant font-medium" x="2" y="104">72k</text>
+<!-- Área bajo la curva con gradiente -->
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#006d30" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#006d30" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<path d="M 40 102 
+                       L 95 86 
+                       L 150 92 
+                       L 205 68 
+                       L 260 74 
+                       L 315 48 
+                       L 365 52 
+                       L 365 125 
+                       L 40 125 Z" fill="url(#chartGradient)"></path>
+<!-- Línea de Tendencia Principal -->
+<path d="M 40 102 
+                       L 95 86 
+                       L 150 92 
+                       L 205 68 
+                       L 260 74 
+                       L 315 48 
+                       L 365 52" fill="none" stroke="#006d30" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<!-- Puntos de Datos con Micro-Interacción Estética -->
+<!-- Lunes: $72.500 -->
+<circle class="fill-surface stroke-secondary stroke-2" cx="40" cy="102" r="3.5"></circle>
+<!-- Martes: $74.200 -->
+<circle class="fill-surface stroke-secondary stroke-2" cx="95" cy="86" r="3.5"></circle>
+<!-- Miércoles: $73.800 -->
+<circle class="fill-surface stroke-secondary stroke-2" cx="150" cy="92" r="3.5"></circle>
+<!-- Jueves: $76.900 -->
+<circle class="fill-surface stroke-secondary stroke-2" cx="205" cy="68" r="3.5"></circle>
+<!-- Viernes: $75.800 -->
+<circle class="fill-surface stroke-secondary stroke-2" cx="260" cy="74" r="3.5"></circle>
+<!-- Sábado: $79.800 -->
+<circle class="fill-secondary stroke-surface stroke-2 shadow" cx="315" cy="48" r="4.5"></circle>
+<!-- Domingo: $78.500 -->
+<circle class="fill-surface stroke-secondary stroke-2" cx="365" cy="52" r="3.5"></circle>
+</svg>
+<!-- Tooltip Flotante de Muestra en el Pico -->
+<div class="absolute -top-1 left-[76%] -translate-x-1/2 bg-primary text-on-primary px-2 py-0.5 rounded shadow text-[10px] font-bold font-tabular-data pointer-events-none">
+              Sáb: $79.800
+            </div>
+</div>
+<!-- Días de la Semana -->
+<div class="flex justify-between px-3 text-[11px] font-medium text-on-surface-variant font-tabular-data">
+<span>Lun</span>
+<span>Mar</span>
+<span>Mié</span>
+<span>Jue</span>
+<span>Vie</span>
+<span class="text-secondary font-bold">Sáb</span>
+<span>Dom</span>
+</div>
+</div>
+<!-- Tabla Comparativa de Plazas y Mercados Centrales -->
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-primary uppercase">Comparativa por Mercado Central</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Base 50kg</span>
+</div>
+<div class="rounded-lg overflow-hidden bg-surface-container-low">
+<table class="w-full text-left font-tabular-data text-tabular-data border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-semibold text-[11px] uppercase">
+<th class="py-2 px-space-sm">Mercado / Central</th>
+<th class="py-2 px-space-xs text-right">Cotización</th>
+<th class="py-2 px-space-sm text-right">Variación</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface text-body-sm">
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2 px-space-sm flex items-center gap-1.5 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    Tunja (Plaza Mayorista)
+                  </td>
+<td class="py-2 px-space-xs text-right font-bold text-primary">$74.500</td>
+<td class="py-2 px-space-sm text-right text-secondary font-semibold">+1.8%</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2 px-space-sm flex items-center gap-1.5 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    Sogamoso (Sugasol)
+                  </td>
+<td class="py-2 px-space-xs text-right font-bold text-primary">$72.000</td>
+<td class="py-2 px-space-sm text-right text-on-surface-variant">-0.5%</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2 px-space-sm flex items-center gap-1.5 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                    Duitama (Mercoplaza)
+                  </td>
+<td class="py-2 px-space-xs text-right font-bold text-primary">$73.800</td>
+<td class="py-2 px-space-sm text-right text-secondary font-semibold">+0.9%</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors bg-surface-container/30">
+<td class="py-2 px-space-sm flex items-center gap-1.5 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                    Bogotá (Corabastos)
+                  </td>
+<td class="py-2 px-space-xs text-right font-bold text-primary">$81.500</td>
+<td class="py-2 px-space-sm text-right text-secondary font-semibold">+2.4%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Indicador de Metadatos Oficiales -->
+<div class="bg-surface-container-high/60 p-space-sm rounded-lg flex flex-col gap-1 text-on-surface-variant">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="font-semibold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+              Fuente oficial: DANE - SIPSA
+            </span>
+<span class="font-tabular-data text-[11px]">Sistema SIPSA Web 4.0</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">
+            Fecha de actualización: <strong class="text-on-surface font-semibold">24 de Octubre de 2024 (05:30 AM)</strong>. Datos compilados en centrales mayoristas para papa parda pastusa de primera.
+          </p>
+</div>
+<!-- Botones de Acción Prominente (CTA) -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<!-- CTA Primario: Contactar Agricultor (#0A2540 / primary-container) -->
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary py-space-sm px-space-md rounded-xl font-title-md text-title-md font-bold flex items-center justify-center gap-space-sm transition-all duration-200 shadow-md active:scale-[0.99] group" id="btnContactar">
+<span class="material-symbols-outlined text-[22px] text-secondary group-hover:scale-110 transition-transform">chat</span>
+<span>Contactar al Agricultor</span>
+</button>
+<!-- CTA Secundario: Negociación Directa / Cotización Formal -->
+<div class="grid grid-cols-2 gap-space-xs">
+<button class="w-full bg-surface-container-low hover:bg-surface-container text-primary py-space-xs px-space-sm rounded-lg font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">request_quote</span>
+<span>Solicitar Muestra</span>
+</button>
+<button class="w-full bg-surface-container-low hover:bg-surface-container text-primary py-space-xs px-space-sm rounded-lg font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+<span>Ficha Técnica (PDF)</span>
+</button>
+</div>
+</div>
+<!-- Alerta de Compromiso Seguro de Boyacá AgroNECT -->
+<div class="flex items-center gap-space-xs p-space-xs bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-secondary">security</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+            Transacción protegida por el <strong class="text-primary font-semibold">Fondo AgroGarantía Boyacá</strong>. Sin costos ocultos.
+          </p>
+</div>
+</div>
+</section>
+</div>
+<!-- Micro-Interacción Modal / Alerta de Contacto (Vanilla Script) -->
+<div class="fixed bottom-6 right-6 max-w-sm bg-primary text-on-primary p-space-md rounded-xl shadow-xl transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-start gap-space-sm" id="contactToast">
+<div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-on-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<div class="flex flex-col flex-1">
+<span class="font-title-md text-title-md font-bold text-on-primary">Canal Directo Habilitado</span>
+<p class="font-body-sm text-body-sm text-inverse-on-surface mt-0.5">
+        Se ha abierto el canal con Asociación Agropecuaria Los Robles (Ventaquemada). Línea directa: (+57) 314 200-XXXX.
+      </p>
+<button class="mt-2 self-start font-label-sm text-label-sm text-secondary font-bold hover:underline" id="closeToast">
+        Cerrar notificación
+      </button>
+</div>
+</div>
+<script>
+    (function() {
+      const btn = document.getElementById('btnContactar');
+      const toast = document.getElementById('contactToast');
+      const closeBtn = document.getElementById('closeToast');
+
+      if (btn && toast) {
+        btn.addEventListener('click', function() {
+          toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+          toast.classList.add('translate-y-0', 'opacity-100');
+
+          setTimeout(() => {
+            toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+            toast.classList.remove('translate-y-0', 'opacity-100');
+          }, 6000);
+        });
+      }
+
+      if (closeBtn && toast) {
+        closeBtn.addEventListener('click', function() {
+          toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+          toast.classList.remove('translate-y-0', 'opacity-100');
+        });
+      }
+    })();
+  </script>
+</div>
+</main>
+</div>
+</body>
+</html>
