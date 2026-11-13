@@ -52,7 +52,13 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <div class="mt-space-sm pt-space-xs flex items-center justify-between">
 <div class="flex items-center gap-space-xs">
 <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
-<div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface leading-tight">Operador Regional</span><span class="font-body-sm text-body-sm text-on-surface-variant">Boyacá Tech</span></div>
+<div class="flex flex-col">
+    <span id="user-name" class="font-label-md text-label-md text-on-surface leading-tight">Cargando...</span>
+    <div class="flex items-center gap-2">
+        <span class="font-body-sm text-body-sm text-on-surface-variant">Sesión activa</span>
+        <a href="index.html" onclick="localStorage.removeItem('agronect_user')" class="text-error text-[11px] hover:underline font-bold" title="Cerrar Sesión">Salir</a>
+    </div>
+</div>
 </div>
 </div>
 </div>
@@ -63,13 +69,14 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <div class="flex items-center gap-space-md">
 <div class="flex items-center gap-space-xs bg-surface-container-lowest px-space-sm py-space-xs rounded-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
 <span class="material-symbols-outlined text-on-surface-variant text-[18px]">search</span>
-<input class="bg-transparent border-0 outline-none text-body-sm font-body-sm text-on-surface placeholder-on-surface-variant w-64" placeholder="Buscar rubro, lote o municipio..." type="text"/>
+<!-- Le agregamos el ID topSearchInput para sincronizarlo con el buscador principal -->
+<input id="topSearchInput" class="bg-transparent border-0 outline-none text-body-sm font-body-sm text-on-surface placeholder-on-surface-variant w-64" placeholder="Buscar rubro, lote o municipio..." type="text"/>
 </div>
 <span class="font-label-sm text-label-sm text-secondary bg-surface-container px-space-sm py-space-xs rounded font-semibold">Tunja - Sogamoso - Duitama</span>
 </div>
 <div class="flex items-center gap-space-md">
-<button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span></button>
-<button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">sync_alt</span><span class="font-label-sm text-label-sm font-semibold">SIPSA Actualizado</span></button>
+<button onclick="alert('No tienes notificaciones nuevas pendientes.')" class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span></button>
+<button onclick="alert('Sincronizando base de datos con SIPSA (Simulación)...')" class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">sync_alt</span><span class="font-label-sm text-label-sm font-semibold">SIPSA Actualizado</span></button>
 <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
 </div>
 </div>
@@ -96,7 +103,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <span class="font-title-md text-title-md text-primary font-bold leading-none">18 productos disponibles hoy</span>
 </div>
 </div>
-<button class="flex items-center gap-space-xs px-space-md py-space-sm bg-primary-container text-on-primary rounded-lg font-label-md text-label-md hover:bg-opacity-90 transition-all shadow-[0_1px_3px_rgba(0,15,34,0.12)]">
+<button onclick="alert('Descargando Boletín Mayorista en PDF (Simulación)...')" class="flex items-center gap-space-xs px-space-md py-space-sm bg-primary-container text-on-primary rounded-lg font-label-md text-label-md hover:bg-opacity-90 transition-all shadow-[0_1px_3px_rgba(0,15,34,0.12)]">
 <span class="material-symbols-outlined text-[18px]">download</span><span>Boletín Mayorista</span>
 </button>
 </div>
@@ -169,7 +176,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <span class="font-title-md text-title-md font-bold text-primary font-tabular-data">$78.000</span><span class="font-label-sm text-label-sm text-on-surface-variant">/ Bulto</span>
 </div>
 </div>
-<button onclick="window.location.href='detalle.html'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+<button onclick="window.location.href='detalle.html?prod=Papa%20Pastusa&precio=78000&unidad=Bulto'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
 <span>Ver detalle</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span>
 </button>
 </div>
@@ -202,7 +209,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <span class="font-title-md text-title-md font-bold text-primary font-tabular-data">$45.000</span><span class="font-label-sm text-label-sm text-on-surface-variant">/ Canastilla</span>
 </div>
 </div>
-<button onclick="window.location.href='detalle.html'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+<button onclick="window.location.href='detalle.html?prod=Zanahoria%20Chantenay&precio=45000&unidad=Canastilla'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
 <span>Ver detalle</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span>
 </button>
 </div>
@@ -235,7 +242,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <span class="font-title-md text-title-md font-bold text-primary font-tabular-data">$38.000</span><span class="font-label-sm text-label-sm text-on-surface-variant">/ Rollo</span>
 </div>
 </div>
-<button onclick="window.location.href='detalle.html'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+<button onclick="window.location.href='detalle.html?prod=Cebolla%20Junca&precio=38000&unidad=Rollo'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
 <span>Ver detalle</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span>
 </button>
 </div>
@@ -268,7 +275,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <span class="font-title-md text-title-md font-bold text-primary font-tabular-data">$62.000</span><span class="font-label-sm text-label-sm text-on-surface-variant">/ Caja</span>
 </div>
 </div>
-<button onclick="window.location.href='detalle.html'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+<button onclick="window.location.href='detalle.html?prod=Uchuva%20de%20Exportaci%C3%B3n&precio=62000&unidad=Caja'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
 <span>Ver detalle</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span>
 </button>
 </div>
@@ -301,7 +308,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <span class="font-title-md text-title-md font-bold text-primary font-tabular-data">$55.000</span><span class="font-label-sm text-label-sm text-on-surface-variant">/ Canastilla</span>
 </div>
 </div>
-<button onclick="window.location.href='detalle.html'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+<button onclick="window.location.href='detalle.html?prod=Curuba%20Silvestre&precio=55000&unidad=Canastilla'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
 <span>Ver detalle</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span>
 </button>
 </div>
@@ -334,7 +341,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <span class="font-title-md text-title-md font-bold text-primary font-tabular-data">$85.000</span><span class="font-label-sm text-label-sm text-on-surface-variant">/ Bulto</span>
 </div>
 </div>
-<button onclick="window.location.href='detalle.html'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+<button onclick="window.location.href='detalle.html?prod=Papa%20Criolla%20Dorada&precio=85000&unidad=Bulto'" class="flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary rounded font-label-md text-label-md transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
 <span>Ver detalle</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span>
 </button>
 </div>
@@ -351,11 +358,11 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <span>Mostrando</span><span class="font-bold text-primary">1 - 6</span><span>de</span><span class="font-bold text-primary">18</span><span>lotes registrados en la red</span>
 </div>
 <div class="flex items-center gap-space-xs">
-<button class="flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-low text-outline hover:text-on-surface hover:bg-surface-container transition-colors disabled:opacity-40" disabled=""><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+<button onclick="alert('Estás en la primera página')" class="flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-low text-outline hover:text-on-surface hover:bg-surface-container transition-colors disabled:opacity-40" disabled=""><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
 <button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-bold flex items-center justify-center">1</button>
-<button class="w-8 h-8 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md font-medium flex items-center justify-center transition-colors">2</button>
-<button class="w-8 h-8 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md font-medium flex items-center justify-center transition-colors">3</button>
-<button class="flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+<button onclick="alert('Paginación simulada. Solo hay 6 productos en esta demo.')" class="w-8 h-8 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md font-medium flex items-center justify-center transition-colors">2</button>
+<button onclick="alert('Paginación simulada. Solo hay 6 productos en esta demo.')" class="w-8 h-8 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md font-medium flex items-center justify-center transition-colors">3</button>
+<button onclick="alert('Paginación simulada. Solo hay 6 productos en esta demo.')" class="flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
 </div>
 <div class="flex items-center gap-space-xs">
 <span class="font-label-sm text-label-sm text-on-surface-variant">Lotes por página:</span>
@@ -367,6 +374,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <script>
   (function initProductFilters() {
     const searchInput = document.getElementById('productSearchInput');
+    const topSearchInput = document.getElementById('topSearchInput');
     const municipalitySelect = document.getElementById('municipalitySelect');
     const resetFiltersBtn = document.getElementById('resetFiltersBtn');
     const clearFiltersAction = document.getElementById('clearFiltersAction');
@@ -374,9 +382,11 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
     const productCards = document.querySelectorAll('.product-card');
     const noResultsState = document.getElementById('noResultsState');
     const grid = document.getElementById('productsGrid');
+    
     let currentCategory = 'all';
     let currentMunicipality = 'all';
     let currentSearchTerm = '';
+
     function filterProducts() {
       let visibleCount = 0;
       productCards.forEach(card => {
@@ -386,6 +396,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
         const matchCat = (currentCategory === 'all' || cat === currentCategory);
         const matchMuni = (currentMunicipality === 'all' || muni.toLowerCase() === currentMunicipality.toLowerCase());
         const matchSearch = (!currentSearchTerm || title.includes(currentSearchTerm) || muni.toLowerCase().includes(currentSearchTerm));
+        
         if (matchCat && matchMuni && matchSearch) {
           card.classList.remove('hidden');
           visibleCount++;
@@ -393,6 +404,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
           card.classList.add('hidden');
         }
       });
+      
       if (visibleCount === 0) {
         grid.classList.add('hidden');
         noResultsState.classList.remove('hidden');
@@ -403,6 +415,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
         noResultsState.classList.remove('flex');
       }
     }
+
     categoryChips.forEach(chip => {
       chip.addEventListener('click', () => {
         categoryChips.forEach(c => {
@@ -415,16 +428,26 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
         filterProducts();
       });
     });
-    searchInput.addEventListener('input', (e) => {
+
+    // Sincronizar el buscador de arriba con el central
+    function updateSearch(e) {
       currentSearchTerm = e.target.value.toLowerCase().trim();
+      searchInput.value = e.target.value;
+      topSearchInput.value = e.target.value;
       filterProducts();
-    });
+    }
+
+    searchInput.addEventListener('input', updateSearch);
+    topSearchInput.addEventListener('input', updateSearch);
+
     municipalitySelect.addEventListener('change', (e) => {
       currentMunicipality = e.target.value;
       filterProducts();
     });
+
     function resetAll() {
       searchInput.value = '';
+      topSearchInput.value = '';
       currentSearchTerm = '';
       municipalitySelect.value = 'all';
       currentMunicipality = 'all';
@@ -440,11 +463,25 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
       currentCategory = 'all';
       filterProducts();
     }
+
     if (resetFiltersBtn) resetFiltersBtn.addEventListener('click', resetAll);
     if (clearFiltersAction) clearFiltersAction.addEventListener('click', resetAll);
   })();
 </script>
 </main>
 </div>
+<script>
+  // Mostrar el nombre del usuario logueado
+  const userEmail = localStorage.getItem('agronect_user');
+  const userNameDisplay = document.getElementById('user-name');
+  
+  if (userEmail) {
+    // Toma la primera letra del correo y la pone en mayúscula
+    userNameDisplay.textContent = userEmail.split('@')[0];
+    userNameDisplay.classList.add('capitalize');
+  } else {
+    userNameDisplay.textContent = 'Operador Invitado';
+  }
+</script>
 </body>
 </html>

@@ -52,7 +52,13 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <div class="mt-space-sm pt-space-xs flex items-center justify-between">
 <div class="flex items-center gap-space-xs">
 <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
-<div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface leading-tight">Operador Regional</span><span class="font-body-sm text-body-sm text-on-surface-variant">Boyacá Tech</span></div>
+<div class="flex flex-col">
+    <span id="user-name" class="font-label-md text-label-md text-on-surface leading-tight">Cargando...</span>
+    <div class="flex items-center gap-2">
+        <span class="font-body-sm text-body-sm text-on-surface-variant">Admin</span>
+        <a href="index.html" onclick="localStorage.removeItem('agronect_user')" class="text-error text-[11px] hover:underline font-bold" title="Cerrar Sesión">Salir</a>
+    </div>
+</div>
 </div>
 </div>
 </div>
@@ -68,8 +74,8 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <span class="font-label-sm text-label-sm text-secondary bg-surface-container px-space-sm py-space-xs rounded font-semibold">Tunja - Sogamoso - Duitama</span>
 </div>
 <div class="flex items-center gap-space-md">
-<button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span></button>
-<button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">sync_alt</span><span class="font-label-sm text-label-sm font-semibold">SIPSA Actualizado</span></button>
+<button onclick="alert('No tienes notificaciones nuevas pendientes.')" class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span></button>
+<button onclick="alert('Sincronizando base de datos con SIPSA (Simulación)...')" class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">sync_alt</span><span class="font-label-sm text-label-sm font-semibold">SIPSA Actualizado</span></button>
 <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
 </div>
 </div>
@@ -107,7 +113,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <div>
 <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block font-semibold">Total Registros Activos</span>
 <div class="flex items-baseline gap-space-sm mt-1">
-<span class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight">142</span>
+<span id="kpi-total" class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight">142</span>
 <span class="font-body-sm text-body-sm text-on-surface-variant font-medium">lotes y rubros</span>
 </div>
 </div>
@@ -158,7 +164,6 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 </div>
 <div class="flex items-center justify-between mt-space-md pt-space-xs bg-surface-container-low/50 -mx-space-md -mb-space-md px-space-md py-2">
 <div class="flex items-center gap-1">
-<!-- Inline Mini SVG sparkline -->
 <svg class="w-20 h-5 text-secondary" fill="none" viewbox="0 0 80 20">
 <path d="M 2 15 Q 20 8 35 12 T 60 4 T 78 2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
 </svg>
@@ -197,12 +202,12 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <option disabled="" selected="" value="">Seleccione rubro...</option>
 <option value="Papa Pastusa">Papa Pastusa (Solanum tuberosum)</option>
 <option value="Papa Criolla Limpia">Papa Criolla Limpia</option>
-<option value="Cebolla Junca Aquitania">Cebolla Junca (Aquitania)</option>
-<option value="Zanahoria Boyacá Lavada">Zanahoria Boyacá Lavada</option>
-<option value="Arveja Verde en Vaina">Arveja Verde en Vaina</option>
-<option value="Uchuva Exportación">Uchuva Exportación (Ventaquemada)</option>
-<option value="Queso Paipa DOP">Queso Paipa DOP (Madurado)</option>
-<option value="Habichuela Corriente">Habichuela Corriente</option>
+<option value="Cebolla Junca">Cebolla Junca (Aquitania)</option>
+<option value="Zanahoria Boyacá">Zanahoria Boyacá Lavada</option>
+<option value="Arveja Verde">Arveja Verde en Vaina</option>
+<option value="Uchuva">Uchuva Exportación</option>
+<option value="Queso Paipa">Queso Paipa DOP (Madurado)</option>
+<option value="Habichuela">Habichuela Corriente</option>
 </select>
 <span class="material-symbols-outlined absolute right-2.5 top-2.5 text-on-surface-variant pointer-events-none text-[20px]">expand_more</span>
 </div>
@@ -243,7 +248,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <span>Fecha Registro</span>
 <span class="text-error">*</span>
 </label>
-<input class="w-full h-10 px-3 rounded-lg bg-surface-container-low text-primary font-tabular-data text-tabular-data focus:bg-surface-container-lowest focus:outline-none shadow-sm transition-all" id="input-fecha" required="" type="date" value="2024-10-24"/>
+<input class="w-full h-10 px-3 rounded-lg bg-surface-container-low text-primary font-tabular-data text-tabular-data focus:bg-surface-container-lowest focus:outline-none shadow-sm transition-all" id="input-fecha" required="" type="date" value="2026-11-13"/>
 </div>
 <!-- 5. Campo de Fuente de Información -->
 <div class="lg:col-span-3 flex flex-col gap-1.5">
@@ -275,7 +280,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 </button>
 </div>
 </form>
-<!-- Inline Success Notification Toast (Simulated via JS) -->
+<!-- Inline Success Notification Toast -->
 <div class="hidden mt-space-md p-space-sm rounded-lg bg-secondary-container/40 text-on-secondary-container flex items-center justify-between" id="toast-success">
 <div class="flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-[20px] text-secondary">task_alt</span>
@@ -304,18 +309,18 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <option value="Central Mayorista Tunja">Central Mayorista Tunja</option>
 <option value="Mayorista Sogamoso">Mayorista Sogamoso</option>
 <option value="Monitoreo Directo Asoguapas">Monitoreo Asoguapas</option>
-<option value="Plaza Duitama">Plaza Duitama</option>
+<option value="Plaza de Mercado Duitama">Plaza de Mercado Duitama</option>
 </select>
 <span class="material-symbols-outlined absolute right-2.5 top-2.5 text-on-surface-variant pointer-events-none text-[18px]">filter_list</span>
 </div>
 </div>
 <!-- Action Buttons (Export, Print) -->
 <div class="flex items-center gap-space-xs self-end lg:self-auto">
-<button class="h-10 px-space-md rounded-lg bg-surface-container text-primary hover:bg-surface-container-high transition-colors flex items-center gap-1.5 font-label-md text-label-md" id="btn-export-excel">
+<button onclick="alert('Generando archivo Excel con los registros (Simulación)...')" class="h-10 px-space-md rounded-lg bg-surface-container text-primary hover:bg-surface-container-high transition-colors flex items-center gap-1.5 font-label-md text-label-md" id="btn-export-excel">
 <span class="material-symbols-outlined text-[18px]">table_view</span>
 <span>Exportar XLS</span>
 </button>
-<button class="h-10 px-space-md rounded-lg bg-primary text-on-primary hover:bg-primary-container transition-colors flex items-center gap-1.5 font-label-md text-label-md shadow-sm" id="btn-export-csv">
+<button onclick="alert('Descargando CSV Mayorista (Simulación)...')" class="h-10 px-space-md rounded-lg bg-primary text-on-primary hover:bg-primary-container transition-colors flex items-center gap-1.5 font-label-md text-label-md shadow-sm" id="btn-export-csv">
 <span class="material-symbols-outlined text-[18px]">download</span>
 <span>CSV Mayorista</span>
 </button>
@@ -336,321 +341,34 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 <th class="py-2.5 px-space-md text-center font-bold">Acciones</th>
 </tr>
 </thead>
-<tbody class="divide-y divide-surface-container-low font-body-sm text-body-sm text-primary">
-<!-- Row 1: Papa Pastusa -->
-<tr class="hover:bg-surface-container-low/60 transition-colors group">
-<td class="py-3 px-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:scale-105 transition-transform flex-shrink-0">
-<span class="material-symbols-outlined text-[20px]">grass</span>
-</div>
-<div class="flex flex-col">
-<span class="font-title-md text-title-md font-bold text-primary leading-tight">Papa Pastusa</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Tubérculos • Altiplano Cundiboyacense</span>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-sm font-medium">Bulto 50kg</td>
-<td class="py-3 px-space-md text-right font-tabular-data text-tabular-data font-bold text-primary">
-              $78.000
-            </td>
-<td class="py-3 px-space-sm text-center">
-<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-secondary bg-secondary-container/30 font-label-sm text-label-sm font-bold">
-<span class="material-symbols-outlined text-[14px]">arrow_upward</span> +2.5%
-              </span>
-</td>
-<td class="py-3 px-space-md font-tabular-data text-tabular-data text-on-surface-variant">24 Oct 2024</td>
-<td class="py-3 px-space-md font-medium">
-<div class="flex items-center gap-1.5">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-<span>DANE - SIPSA</span>
-</div>
-</td>
-<td class="py-3 px-space-sm text-center">
-<span class="inline-block px-2.5 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm font-semibold">
-                Verificado
-              </span>
-</td>
-<td class="py-3 px-space-md text-center">
-<div class="flex items-center justify-center gap-1">
-<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" title="Editar registro">
-<span class="material-symbols-outlined text-[18px]">edit</span>
-</button>
-<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors" title="Ver histórico analítico">
-<span class="material-symbols-outlined text-[18px]">query_stats</span>
-</button>
-<button class="w-8 h-8 rounded hover:bg-error-container/40 flex items-center justify-center text-on-surface-variant hover:text-error transition-colors" title="Eliminar registro">
-<span class="material-symbols-outlined text-[18px]">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 2: Cebolla Junca -->
-<tr class="hover:bg-surface-container-low/60 transition-colors group">
-<td class="py-3 px-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-secondary group-hover:scale-105 transition-transform flex-shrink-0">
-<span class="material-symbols-outlined text-[20px]">spa</span>
-</div>
-<div class="flex flex-col">
-<span class="font-title-md text-title-md font-bold text-primary leading-tight">Cebolla Junca</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Hortalizas • Cuenca Lago de Tota (Aquitania)</span>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-sm font-medium">Rollo 30kg</td>
-<td class="py-3 px-space-md text-right font-tabular-data text-tabular-data font-bold text-primary">
-              $45.000
-            </td>
-<td class="py-3 px-space-sm text-center">
-<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-error bg-error-container/30 font-label-sm text-label-sm font-bold">
-<span class="material-symbols-outlined text-[14px]">arrow_downward</span> -1.2%
-              </span>
-</td>
-<td class="py-3 px-space-md font-tabular-data text-tabular-data text-on-surface-variant">24 Oct 2024</td>
-<td class="py-3 px-space-md font-medium">
-<div class="flex items-center gap-1.5">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-<span>Mayorista Sogamoso</span>
-</div>
-</td>
-<td class="py-3 px-space-sm text-center">
-<span class="inline-block px-2.5 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm font-semibold">
-                Verificado
-              </span>
-</td>
-<td class="py-3 px-space-md text-center">
-<div class="flex items-center justify-center gap-1">
-<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" title="Editar registro">
-<span class="material-symbols-outlined text-[18px]">edit</span>
-</button>
-<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors" title="Ver histórico analítico">
-<span class="material-symbols-outlined text-[18px]">query_stats</span>
-</button>
-<button class="w-8 h-8 rounded hover:bg-error-container/40 flex items-center justify-center text-on-surface-variant hover:text-error transition-colors" title="Eliminar registro">
-<span class="material-symbols-outlined text-[18px]">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 3: Zanahoria Boyacá Lavada -->
-<tr class="hover:bg-surface-container-low/60 transition-colors group">
-<td class="py-3 px-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:scale-105 transition-transform flex-shrink-0">
-<span class="material-symbols-outlined text-[20px]">nutrition</span>
-</div>
-<div class="flex flex-col">
-<span class="font-title-md text-title-md font-bold text-primary leading-tight">Zanahoria Boyacá</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Hortalizas • Saboya / Villa de Leyva</span>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-sm font-medium">Bulto 50kg</td>
-<td class="py-3 px-space-md text-right font-tabular-data text-tabular-data font-bold text-primary">
-              $52.500
-            </td>
-<td class="py-3 px-space-sm text-center">
-<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-secondary bg-secondary-container/30 font-label-sm text-label-sm font-bold">
-<span class="material-symbols-outlined text-[14px]">arrow_upward</span> +3.8%
-              </span>
-</td>
-<td class="py-3 px-space-md font-tabular-data text-tabular-data text-on-surface-variant">23 Oct 2024</td>
-<td class="py-3 px-space-md font-medium">
-<div class="flex items-center gap-1.5">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-<span>Central Mayorista Tunja</span>
-</div>
-</td>
-<td class="py-3 px-space-sm text-center">
-<span class="inline-block px-2.5 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm font-semibold">
-                Verificado
-              </span>
-</td>
-<td class="py-3 px-space-md text-center">
-<div class="flex items-center justify-center gap-1">
-<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" title="Editar registro">
-<span class="material-symbols-outlined text-[18px]">edit</span>
-</button>
-<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors" title="Ver histórico analítico">
-<span class="material-symbols-outlined text-[18px]">query_stats</span>
-</button>
-<button class="w-8 h-8 rounded hover:bg-error-container/40 flex items-center justify-center text-on-surface-variant hover:text-error transition-colors" title="Eliminar registro">
-<span class="material-symbols-outlined text-[18px]">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 4: Arveja Verde en Vaina -->
-<tr class="hover:bg-surface-container-low/60 transition-colors group">
-<td class="py-3 px-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-secondary group-hover:scale-105 transition-transform flex-shrink-0">
-<span class="material-symbols-outlined text-[20px]">psychiatry</span>
-</div>
-<div class="flex flex-col">
-<span class="font-title-md text-title-md font-bold text-primary leading-tight">Arveja Verde en Vaina</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Leguminosas • Samacá / Tinjacá</span>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-sm font-medium">Bulto 50kg</td>
-<td class="py-3 px-space-md text-right font-tabular-data text-tabular-data font-bold text-primary">
-              $165.000
-            </td>
-<td class="py-3 px-space-sm text-center">
-<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-secondary bg-secondary-container/30 font-label-sm text-label-sm font-bold">
-<span class="material-symbols-outlined text-[14px]">arrow_upward</span> +5.1%
-              </span>
-</td>
-<td class="py-3 px-space-md font-tabular-data text-tabular-data text-on-surface-variant">23 Oct 2024</td>
-<td class="py-3 px-space-md font-medium">
-<div class="flex items-center gap-1.5">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-<span>Monitoreo Directo Asoguapas</span>
-</div>
-</td>
-<td class="py-3 px-space-sm text-center">
-<span class="inline-block px-2.5 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">
-                En revisión
-              </span>
-</td>
-<td class="py-3 px-space-md text-center">
-<div class="flex items-center justify-center gap-1">
-<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" title="Editar registro">
-<span class="material-symbols-outlined text-[18px]">edit</span>
-</button>
-<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors" title="Ver histórico analítico">
-<span class="material-symbols-outlined text-[18px]">query_stats</span>
-</button>
-<button class="w-8 h-8 rounded hover:bg-error-container/40 flex items-center justify-center text-on-surface-variant hover:text-error transition-colors" title="Eliminar registro">
-<span class="material-symbols-outlined text-[18px]">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 5: Uchuva Exportación -->
-<tr class="hover:bg-surface-container-low/60 transition-colors group">
-<td class="py-3 px-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:scale-105 transition-transform flex-shrink-0">
-<span class="material-symbols-outlined text-[20px]">eco</span>
-</div>
-<div class="flex flex-col">
-<span class="font-title-md text-title-md font-bold text-primary leading-tight">Uchuva con Cáliz</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Frutales Exóticos • Ventaquemada / Arcabuco</span>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-sm font-medium">Canastilla 22kg</td>
-<td class="py-3 px-space-md text-right font-tabular-data text-tabular-data font-bold text-primary">
-              $92.000
-            </td>
-<td class="py-3 px-space-sm text-center">
-<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-on-surface-variant bg-surface-container font-label-sm text-label-sm font-bold">
-                0.0%
-              </span>
-</td>
-<td class="py-3 px-space-md font-tabular-data text-tabular-data text-on-surface-variant">22 Oct 2024</td>
-<td class="py-3 px-space-md font-medium">
-<div class="flex items-center gap-1.5">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-<span>DANE - SIPSA</span>
-</div>
-</td>
-<td class="py-3 px-space-sm text-center">
-<span class="inline-block px-2.5 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm font-semibold">
-                Verificado
-              </span>
-</td>
-<td class="py-3 px-space-md text-center">
-<div class="flex items-center justify-center gap-1">
-<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" title="Editar registro">
-<span class="material-symbols-outlined text-[18px]">edit</span>
-</button>
-<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors" title="Ver histórico analítico">
-<span class="material-symbols-outlined text-[18px]">query_stats</span>
-</button>
-<button class="w-8 h-8 rounded hover:bg-error-container/40 flex items-center justify-center text-on-surface-variant hover:text-error transition-colors" title="Eliminar registro">
-<span class="material-symbols-outlined text-[18px]">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 6: Queso Paipa DOP -->
-<tr class="hover:bg-surface-container-low/60 transition-colors group">
-<td class="py-3 px-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-secondary group-hover:scale-105 transition-transform flex-shrink-0">
-<span class="material-symbols-outlined text-[20px]">workspace_premium</span>
-</div>
-<div class="flex flex-col">
-<span class="font-title-md text-title-md font-bold text-primary leading-tight">Queso Paipa DOP</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Lácteos Especiales • Paipa / Sotaquirá</span>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-sm font-medium">Kilo (Bloque)</td>
-<td class="py-3 px-space-md text-right font-tabular-data text-tabular-data font-bold text-primary">
-              $36.000
-            </td>
-<td class="py-3 px-space-sm text-center">
-<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-secondary bg-secondary-container/30 font-label-sm text-label-sm font-bold">
-<span class="material-symbols-outlined text-[14px]">arrow_upward</span> +0.8%
-              </span>
-</td>
-<td class="py-3 px-space-md font-tabular-data text-tabular-data text-on-surface-variant">22 Oct 2024</td>
-<td class="py-3 px-space-md font-medium">
-<div class="flex items-center gap-1.5">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-<span>Plaza de Mercado Duitama</span>
-</div>
-</td>
-<td class="py-3 px-space-sm text-center">
-<span class="inline-block px-2.5 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm font-semibold">
-                Verificado
-              </span>
-</td>
-<td class="py-3 px-space-md text-center">
-<div class="flex items-center justify-center gap-1">
-<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" title="Editar registro">
-<span class="material-symbols-outlined text-[18px]">edit</span>
-</button>
-<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors" title="Ver histórico analítico">
-<span class="material-symbols-outlined text-[18px]">query_stats</span>
-</button>
-<button class="w-8 h-8 rounded hover:bg-error-container/40 flex items-center justify-center text-on-surface-variant hover:text-error transition-colors" title="Eliminar registro">
-<span class="material-symbols-outlined text-[18px]">delete</span>
-</button>
-</div>
-</td>
-</tr>
+<tbody class="divide-y divide-surface-container-low font-body-sm text-body-sm text-primary" id="tabla-precios-body">
+<!-- Las filas se insertarán aquí dinámicamente o puedes dejar las estáticas -->
 </tbody>
 </table>
 </div>
 <!-- Table Pagination & Operational Summary Footer -->
 <div class="p-space-md bg-surface-container-low/40 flex flex-col sm:flex-row items-center justify-between gap-space-sm">
 <div class="font-body-sm text-body-sm text-on-surface-variant font-medium">
-        Mostrando <span class="font-bold text-primary">1</span> a <span class="font-bold text-primary">6</span> de <span class="font-bold text-primary">48</span> registros de referencia en Boyacá
+        Mostrando <span class="font-bold text-primary" id="mostrando-count">1</span> a <span class="font-bold text-primary">6</span> de <span class="font-bold text-primary">48</span> registros de referencia en Boyacá
       </div>
 <div class="flex items-center gap-space-xs">
-<button class="w-9 h-9 rounded-lg bg-surface-container-lowest text-on-surface-variant/40 flex items-center justify-center shadow-sm cursor-not-allowed" disabled="">
+<button onclick="alert('Estás en la primera página')" class="w-9 h-9 rounded-lg bg-surface-container-lowest text-on-surface-variant/40 flex items-center justify-center shadow-sm cursor-not-allowed" disabled="">
 <span class="material-symbols-outlined text-[18px]">chevron_left</span>
 </button>
 <button class="w-9 h-9 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-bold flex items-center justify-center shadow-sm">
           1
         </button>
-<button class="w-9 h-9 rounded-lg bg-surface-container-lowest text-primary hover:bg-surface-container font-label-md text-label-md font-medium flex items-center justify-center shadow-sm transition-colors">
+<button onclick="alert('Paginación simulada.')" class="w-9 h-9 rounded-lg bg-surface-container-lowest text-primary hover:bg-surface-container font-label-md text-label-md font-medium flex items-center justify-center shadow-sm transition-colors">
           2
         </button>
-<button class="w-9 h-9 rounded-lg bg-surface-container-lowest text-primary hover:bg-surface-container font-label-md text-label-md font-medium flex items-center justify-center shadow-sm transition-colors">
+<button onclick="alert('Paginación simulada.')" class="w-9 h-9 rounded-lg bg-surface-container-lowest text-primary hover:bg-surface-container font-label-md text-label-md font-medium flex items-center justify-center shadow-sm transition-colors">
           3
         </button>
 <span class="px-1 text-on-surface-variant">...</span>
-<button class="w-9 h-9 rounded-lg bg-surface-container-lowest text-primary hover:bg-surface-container font-label-md text-label-md font-medium flex items-center justify-center shadow-sm transition-colors">
+<button onclick="alert('Paginación simulada.')" class="w-9 h-9 rounded-lg bg-surface-container-lowest text-primary hover:bg-surface-container font-label-md text-label-md font-medium flex items-center justify-center shadow-sm transition-colors">
           8
         </button>
-<button class="w-9 h-9 rounded-lg bg-surface-container-lowest text-primary hover:bg-surface-container flex items-center justify-center shadow-sm transition-colors">
+<button onclick="alert('Paginación simulada.')" class="w-9 h-9 rounded-lg bg-surface-container-lowest text-primary hover:bg-surface-container flex items-center justify-center shadow-sm transition-colors">
 <span class="material-symbols-outlined text-[18px]">chevron_right</span>
 </button>
 </div>
@@ -658,28 +376,155 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
 </div>
 </div>
 <script>
-  // Micro-interacción: Guardar Precio Simulado
-  document.getElementById('form-nuevo-precio')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const toast = document.getElementById('toast-success');
+  // 1. Mostrar nombre del usuario logueado
+  const userEmail = localStorage.getItem('agronect_user');
+  const userNameDisplay = document.getElementById('user-name');
+  if (userEmail) {
+    userNameDisplay.textContent = userEmail.split('@')[0];
+    userNameDisplay.classList.add('capitalize');
+  } else {
+    userNameDisplay.textContent = 'Operador Invitado';
+  }
+
+  // 2. Datos iniciales (Simulando la base de datos)
+  let registros = [
+    { prod: "Papa Pastusa", cat: "Tubérculos • Altiplano", unidad: "Bulto 50kg", precio: 78000, tendencia: "+2.5%", clase: "text-secondary bg-secondary-container/30", fecha: "24 Oct 2024", fuente: "DANE - SIPSA", estado: "Verificado", claseEstado: "bg-secondary-container/40 text-on-secondary-container" },
+    { prod: "Cebolla Junca", cat: "Hortalizas • Aquitania", unidad: "Rollo 30kg", precio: 45000, tendencia: "-1.2%", clase: "text-error bg-error-container/30", fecha: "24 Oct 2024", fuente: "Mayorista Sogamoso", estado: "Verificado", claseEstado: "bg-secondary-container/40 text-on-secondary-container" },
+    { prod: "Zanahoria Boyacá", cat: "Hortalizas • Saboya", unidad: "Bulto 50kg", precio: 52500, tendencia: "+3.8%", clase: "text-secondary bg-secondary-container/30", fecha: "23 Oct 2024", fuente: "Central Mayorista Tunja", estado: "Verificado", claseEstado: "bg-secondary-container/40 text-on-secondary-container" },
+    { prod: "Arveja Verde en Vaina", cat: "Leguminosas • Samacá", unidad: "Bulto 50kg", precio: 165000, tendencia: "+5.1%", clase: "text-secondary bg-secondary-container/30", fecha: "23 Oct 2024", fuente: "Monitoreo Directo Asoguapas", estado: "En revisión", claseEstado: "bg-surface-container-high text-primary" },
+    { prod: "Uchuva con Cáliz", cat: "Frutales • Ventaquemada", unidad: "Canastilla 22kg", precio: 92000, tendencia: "0.0%", clase: "text-on-surface-variant bg-surface-container", fecha: "22 Oct 2024", fuente: "DANE - SIPSA", estado: "Verificado", claseEstado: "bg-secondary-container/40 text-on-secondary-container" },
+    { prod: "Queso Paipa DOP", cat: "Lácteos • Paipa", unidad: "Kilo (Bloque)", precio: 36000, tendencia: "+0.8%", clase: "text-secondary bg-secondary-container/30", fecha: "22 Oct 2024", fuente: "Plaza de Mercado Duitama", estado: "Verificado", claseEstado: "bg-secondary-container/40 text-on-secondary-container" }
+  ];
+
+  // 3. Función para renderizar la tabla
+  function renderTabla() {
+    const tbody = document.getElementById('tabla-precios-body');
+    tbody.innerHTML = ''; // Limpiar tabla
     
-    if (toast) {
-      toast.classList.remove('hidden');
-      toast.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      setTimeout(() => {
-        toast.classList.add('hidden');
-      }, 5000);
+    registros.forEach((reg, index) => {
+      const tr = document.createElement('tr');
+      tr.className = "hover:bg-surface-container-low/60 transition-colors group";
+      tr.innerHTML = `
+        <td class="py-3 px-space-md">
+          <div class="flex items-center gap-space-sm">
+            <div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:scale-105 transition-transform flex-shrink-0">
+              <span class="material-symbols-outlined text-[20px]">inventory_2</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-title-md text-title-md font-bold text-primary leading-tight">${reg.prod}</span>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">${reg.cat}</span>
+            </div>
+          </div>
+        </td>
+        <td class="py-3 px-space-sm font-medium">${reg.unidad}</td>
+        <td class="py-3 px-space-md text-right font-tabular-data text-tabular-data font-bold text-primary">$${reg.precio.toLocaleString('es-CO')}</td>
+        <td class="py-3 px-space-sm text-center">
+          <span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full font-label-sm text-label-sm font-bold ${reg.clase}">
+            ${reg.tendencia}
+          </span>
+        </td>
+        <td class="py-3 px-space-md font-tabular-data text-tabular-data text-on-surface-variant">${reg.fecha}</td>
+        <td class="py-3 px-space-md font-medium">
+          <div class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            <span>${reg.fuente}</span>
+          </div>
+        </td>
+        <td class="py-3 px-space-sm text-center">
+          <span class="inline-block px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold ${reg.claseEstado}">
+            ${reg.estado}
+          </span>
+        </td>
+        <td class="py-3 px-space-md text-center">
+          <div class="flex items-center justify-center gap-1">
+            <button onclick="alert('Función de edición en desarrollo.')" class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" title="Editar registro">
+              <span class="material-symbols-outlined text-[18px]">edit</span>
+            </button>
+            <button onclick="alert('Mostrando histórico analítico del producto.')" class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors" title="Ver histórico">
+              <span class="material-symbols-outlined text-[18px]">query_stats</span>
+            </button>
+            <button onclick="eliminarRegistro(${index})" class="w-8 h-8 rounded hover:bg-error-container/40 flex items-center justify-center text-on-surface-variant hover:text-error transition-colors" title="Eliminar registro">
+              <span class="material-symbols-outlined text-[18px]">delete</span>
+            </button>
+          </div>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    // Actualizar KPIs
+    document.getElementById('kpi-total').textContent = 136 + registros.length;
+    document.getElementById('mostrando-count').textContent = registros.length;
+  }
+
+  // 4. Función para eliminar registros
+  window.eliminarRegistro = function(index) {
+    if(confirm('¿Estás seguro de eliminar este registro de precio?')) {
+      registros.splice(index, 1);
+      renderTabla();
     }
+  }
+
+  // 5. Lógica del Formulario de Registro
+  document.getElementById('form-nuevo-precio').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Capturar datos
+    const prodValue = document.getElementById('input-producto').value;
+    const precioValue = parseInt(document.getElementById('input-precio').value);
+    const unidadValue = document.getElementById('input-unidad').value;
+    const fechaValue = document.getElementById('input-fecha').value;
+    const fuenteValue = document.getElementById('input-fuente').value;
+    
+    // Formatear fecha
+    const fechaObj = new Date(fechaValue);
+    const opciones = { day: '2-digit', month: 'short', year: 'numeric' };
+    const fechaFormateada = fechaObj.toLocaleDateString('es-CO', opciones).replace('.', '');
+
+    // Crear nuevo objeto
+    const nuevoRegistro = {
+      prod: prodValue,
+      cat: "Registro Manual • Boyacá",
+      unidad: unidadValue,
+      precio: precioValue,
+      tendencia: "0.0%",
+      clase: "text-on-surface-variant bg-surface-container",
+      fecha: fechaFormateada,
+      fuente: fuenteValue,
+      estado: "En revisión",
+      claseEstado: "bg-surface-container-high text-primary"
+    };
+
+    // Agregar a la lista y renderizar
+    registros.unshift(nuevoRegistro);
+    renderTabla();
+
+    // Mostrar Toast de Éxito
+    const toast = document.getElementById('toast-success');
+    toast.classList.remove('hidden');
+    toast.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    
+    // Limpiar formulario
+    this.reset();
+    
+    // Ocultar toast después de 4 seg
+    setTimeout(() => { toast.classList.add('hidden'); }, 4000);
   });
 
-  // Micro-interacción: Búsqueda dinámica en tabla
-  const searchInput = document.getElementById('table-search');
-  searchInput?.addEventListener('input', function(e) {
+  // 6. Buscador y Filtros de tabla
+  document.getElementById('table-search').addEventListener('input', function(e) {
     const term = e.target.value.toLowerCase();
-    const rows = document.querySelectorAll('#precios-table tbody tr');
+    const rows = document.querySelectorAll('#tabla-precios-body tr');
     rows.forEach(row => {
-      const text = row.innerText.toLowerCase();
-      if (text.includes(term)) {
+      row.style.display = row.innerText.toLowerCase().includes(term) ? '' : 'none';
+    });
+  });
+
+  document.getElementById('filter-source').addEventListener('change', function(e) {
+    const selected = e.target.value;
+    const rows = document.querySelectorAll('#tabla-precios-body tr');
+    rows.forEach(row => {
+      if (selected === 'ALL' || row.innerText.includes(selected)) {
         row.style.display = '';
       } else {
         row.style.display = 'none';
@@ -687,36 +532,18 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#b0c
     });
   });
 
-  // Micro-interacción: Filtro por fuente
-  const sourceFilter = document.getElementById('filter-source');
-  sourceFilter?.addEventListener('change', function(e) {
-    const selected = e.target.value;
-    const rows = document.querySelectorAll('#precios-table tbody tr');
-    rows.forEach(row => {
-      if (selected === 'ALL') {
-        row.style.display = '';
-      } else {
-        const text = row.innerText;
-        if (text.includes(selected)) {
-          row.style.display = '';
-        } else {
-          row.style.display = 'none';
-        }
-      }
-    });
+  // 7. Animación de Sincronización
+  document.getElementById('btn-manual-sync').addEventListener('click', function() {
+    const icon = this.querySelector('.material-symbols-outlined');
+    icon.classList.add('animate-spin');
+    setTimeout(() => { 
+      icon.classList.remove('animate-spin'); 
+      alert('Sincronización con el feed de SIPSA completada.');
+    }, 1200);
   });
 
-  // Micro-interacción: Sincronización manual feedback
-  const syncBtn = document.getElementById('btn-manual-sync');
-  syncBtn?.addEventListener('click', function() {
-    const icon = this.querySelector('.material-symbols-outlined');
-    if (icon) {
-      icon.classList.add('animate-spin');
-      setTimeout(() => {
-        icon.classList.remove('animate-spin');
-      }, 1200);
-    }
-  });
+  // Inicializar la tabla al cargar la página
+  renderTabla();
 </script>
 </main>
 </div>
